@@ -1,5 +1,5 @@
-var highScores = document.querySelector("#highscoresPage");
-var quizTimer = document.querySelector("#timer");
+var score = 0;
+var questionIndex = 0;
 
 var questions = [
     {
@@ -32,3 +32,29 @@ var questions = [
         answer:"console.log"
     }
 ];
+
+document.addEventListener("DOMContentLoaded",() =>{
+    var timeLeftDisplay = document.getElementById("time-left")
+    var startBtn = document.getElementById("start-btn")
+    var penalty = 10;
+    var timeLeft = 75;
+    function countDown(){
+        setInterval(function(){
+            if(timeLeft <= 0) {
+                clearInterval(timeLeft = 0)
+            }
+            timeLeftDisplay.innerHTML = timeLeft
+            timeLeft -=1;
+        },1000)
+    }
+    startBtn.addEventListener("click", function(){
+        countDown();
+        document.getElementById("start-page").style.display = "none";
+        document.getElementById("quizContent").style.display ="block";
+    });
+    render(questionsIndex)
+});
+
+function render(questionIndex) {
+
+}
