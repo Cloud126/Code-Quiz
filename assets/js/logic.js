@@ -13,11 +13,7 @@ var questions = [
   {
     title: "Arrays in JavaScript can be used to store ____.",
     choices: [
-      "numbers and strings",
-      "other arrays",
-      "booleans",
-      "all of the above"
-    ],
+      "numbers and strings", "other arrays", "booleans", "all of the above"],
     answer: "all of the above"
   },
   {
@@ -58,7 +54,7 @@ function startQuiz() {
   // un-hide questions section
   questionsEl.style.display = "block";
   // start timer
-  clockTick();
+  timerId = setInterval(clockTick, 1000)
   // show starting time
   timerEl.textContent = time;
   getQuestion();
@@ -99,7 +95,7 @@ function questionClick() {
     }
 
     // display new time on page
-    timerEl.textContent = time;
+    timerEl.innerHTML = time;
     // play "wrong" sound effect
     sfxWrong.play()
     feedbackEl.textContent = "Wrong!";
@@ -116,7 +112,7 @@ function questionClick() {
   }, 1000);
 
   // move to next question
-
+  currentQuestionIndex++;
   // check if we've run out of questions
   if (currentQuestionIndex === questions.length) {
     quizEnd();
@@ -127,11 +123,11 @@ function questionClick() {
 
 function quizEnd() {
   // stop timer
-
+  clearInterval(timerId)
   // show end screen
-
+  document.getElementById("end-screen").style.display = "block";
   // show final score
-
+  document.getElementById("end-screen").style.display = "block";
   // hide questions section
   questionsEl.setAttribute("class", "hide");
 }
@@ -149,7 +145,7 @@ function clockTick() {
 
 function saveHighscore() {
   // get value of input box
-
+  
   // make sure value wasn't empty
   if (initials !== "") {
     // get saved scores from localstorage, or if not any, set to empty array
