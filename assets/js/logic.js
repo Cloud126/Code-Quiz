@@ -97,8 +97,7 @@ function getQuestion() {
 
 function questionClick() {
   // check if user guessed wrong
-  console.log(currentQuestionIndex)
-  if (this.value !== questions[currentQuestionIndex].answer && currentQuestionIndex < 6) {
+ if (this.value !== questions[currentQuestionIndex].answer && currentQuestionIndex < 6) {
 
     // penalize time
     time -= 15;
