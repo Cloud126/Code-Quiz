@@ -34,7 +34,7 @@ var questions = [
 var currentQuestionIndex = 0;
 var time = questions.length * 15;
 var timerId;
-//ocalStorage.setItem("highScores", [])
+
 // variables to reference DOM elements
 var questionsEl = document.getElementById("questions");
 var timerEl = document.getElementById("time");
@@ -54,13 +54,13 @@ var sfxWrong = new Audio("assets/sfx/incorrect.wav");
 function startQuiz() {
   // hide start screen
   startScreen.style.display = "none";
-  
+
   // un-hide questions section
   questionsEl.style.display = "block";
-  
+
   // start timer
   timerId = setInterval(clockTick, 1000)
-  
+
   // show starting time
   timerEl.textContent = time;
   getQuestion();
@@ -73,22 +73,22 @@ function getQuestion() {
   // update title with current question
   var titleEl = document.getElementById("question-title")
   titleEl.textContent = currentQuestion.title
-  
+
   // clear out any old question choices
   choicesEl.innerHTML = "";
-  
+
   // loop over choices
   currentQuestion.choices.forEach(function (choice, i) {
-    
+
     // create new button for each choice
     var choiceBtn = document.createElement("button");
     choiceBtn.setAttribute("class", "choice");
     choiceBtn.setAttribute("value", choice)
     choiceBtn.textContent = i + 1 + ". " + choice;
-    
+
     // attach click event listener to each choice
     choiceBtn.addEventListener("click", questionClick);
-    
+
     // display on the page
     choicesEl.appendChild(choiceBtn);
 
@@ -99,7 +99,7 @@ function questionClick() {
   // check if user guessed wrong
   console.log(currentQuestionIndex)
   if (this.value !== questions[currentQuestionIndex].answer && currentQuestionIndex < 6) {
-    
+
     // penalize time
     time -= 15;
 
@@ -109,12 +109,12 @@ function questionClick() {
 
     // display new time on page
     timerEl.innerHTML = time;
-    
+
     // play "wrong" sound effect
     sfxWrong.play()
     feedbackEl.textContent = "Wrong!";
   } else {
-    
+
     // play "right" sound effect
     sfxRight.play();
     feedbackEl.textContent = "Correct!";
@@ -128,7 +128,7 @@ function questionClick() {
 
   // move to next question
   currentQuestionIndex++;
-  
+
   // check if we've run out of questions
   if (currentQuestionIndex === questions.length) {
     quizEnd();
@@ -140,13 +140,13 @@ function questionClick() {
 function quizEnd() {
   // stop timer
   clearInterval(timerId)
-  
+
   // show end screen
   endScreen.setAttribute("class", "block")
-  
+
   // show final score
   finalScore.setAttribute("class", "block")
-  
+
   // hide questions section
   questionsEl.setAttribute("class", "hide");
 }
@@ -164,13 +164,13 @@ function clockTick() {
 
 function saveHighscore() {
   // get value of input box
-  var initials = initialsEl.value; 
-  
+  var initials = initialsEl.value;
+
   // make sure value wasn't empty
   if (initials !== "") {
-  
+
     // get saved scores from localstorage, or if not any, set to empty array
- var highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+    var highscores = JSON.parse(localStorage.getItem("highscores")) || [];
 
     // format new score object for current user
     var newScore = {
@@ -181,7 +181,7 @@ function saveHighscore() {
     // save to localstorage
     highscores.push(newScore);
     localStorage.setItem("highscores", JSON.stringify(highscores));
-    
+
     // redirect to next page
     window.location.href = "highscores.html";
   }
