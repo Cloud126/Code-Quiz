@@ -20,13 +20,13 @@ https://cloud126.github.io/Code-Quiz/
 
 ## Link To Github
 
-https://github.com/Cloud126/ 
+https://github.com/Cloud126/Code-Quiz/
 
 ## Screenshot
 
-![Start Page](images/Screenshot_1.PNG "Screenshot-1")
+![Start Page](assets/images/Screenshot_1.PNG "Screenshot-1")
 
-![Questions](images/Screenshot_2.PNG "Screenshot-2")
+![Questions](assets/images/Screenshot_2.PNG "Screenshot-2")
 
 ## License
 
