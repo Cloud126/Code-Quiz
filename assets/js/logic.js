@@ -53,10 +53,10 @@ var sfxWrong = new Audio("assets/sfx/incorrect.wav");
 
 function startQuiz() {
   // hide start screen
-  startScreen.style.display = "none";
+  startScreen.setAttribute("class","hide");
 
   // un-hide questions section
-  questionsEl.style.display = "block";
+  questionsEl.setAttribute("class","block");
 
   // start timer
   timerId = setInterval(clockTick, 1000)
